@@ -1,0 +1,61 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.7.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.maxrocky'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+ext {
+	orikaVersion = '1.5.1'
+	pagehelperVersion='4.1.0'
+	commonsLang3Version = '3.6'
+	weChatVersion = '2.8.0'
+	httpClientVersion = '4.5.3'
+	alibabaOssVersion = '2.7.0'
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compileOnly('org.projectlombok:lombok')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	//配置mapperFactory
+	compile("ma.glasnost.orika:orika-core:$orikaVersion")
+
+	//分页插件
+	compile("com.github.pagehelper:pagehelper:${pagehelperVersion}")
+
+	compile("org.apache.commons:commons-lang3:$commonsLang3Version")
+
+	//微信公众号
+	compile("com.github.binarywang:weixin-java-mp:$weChatVersion")
+
+	//httpclient
+	compile ("org.apache.httpcomponents:httpclient:$httpClientVersion")
+
+	//jsonlib
+	compile("net.sf.json-lib:json-lib:2.4:jdk15")
+
+	//阿里OSS
+	compile ("com.aliyun.oss:aliyun-sdk-oss:$alibabaOssVersion")
+}
